@@ -1,5 +1,6 @@
 package com.felix.learning.config;
 
+import com.atomikos.jdbc.AtomikosDataSourceBean;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -15,15 +16,15 @@ public class DataSourceConfig {
 
     @Primary
     @Bean("primaryDataSource")
-    @ConfigurationProperties(prefix = "spring.datasource.primary")
+    @ConfigurationProperties(prefix = "primarydb")
     public DataSource primaryDataSource() {
-        return DataSourceBuilder.create().build();
+        return new AtomikosDataSourceBean();
     }
 
     @Bean("secondaryDataSource")
-    @ConfigurationProperties(prefix = "spring.datasource.secondary")
+    @ConfigurationProperties(prefix = "secondarydb")
     public DataSource secondaryDataSource() {
-        return DataSourceBuilder.create().build();
+        return new AtomikosDataSourceBean();
     }
 
     @Bean("primaryJdbcTemplate")

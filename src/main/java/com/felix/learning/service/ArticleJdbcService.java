@@ -24,7 +24,6 @@ public class ArticleJdbcService {
         article.setCreateTime(LocalDateTime.now());
         articleJdbcDao.save(article, primaryJdbcTemplate);
         articleJdbcDao.save(article, secondaryJdbcTemplate);
-        int a = 10 / 0;
     }
 
     @Transactional
